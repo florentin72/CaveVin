@@ -1,0 +1,52 @@
+<!--
+  Generated template for the AjoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ajout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h1>Ajouter une bouteille</h1>
+  <ion-list>
+
+
+    <ion-item>
+        <ion-label>Domaine</ion-label>
+        <ion-input type = "text"[(ngModel)]="domaine" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input id= "name" type = "text" [(ngModel)]= "nom"> </ion-input>
+    </ion-item>
+
+
+
+    <ion-item>
+        <ion-label>Type de Vin </ion-label>
+      <ion-select  [(ngModel)]="type">
+          
+
+        <ion-option value="rouge">Vin Rouge</ion-option>
+        <ion-option value="blanc">Vin Blanc</ion-option>
+        <ion-option value="rose">Vin Rosé</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-label>Quantité</ion-label>
+        <ion-input type = "number" min = "1"  [(ngModel)]="quantite"></ion-input>
+    </ion-item>
+
+</ion-list> 
+<button ion-button  (click)="addBottle()"> valider </button> 
+</ion-content>

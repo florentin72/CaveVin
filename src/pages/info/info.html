@@ -1,0 +1,60 @@
+<!--
+  Generated template for the InfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Description
+    </ion-title>
+   
+  
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="img/bottle.jpg">
+        </ion-avatar>
+        <h2>Chateau la Domique 2011</h2>
+        <p>ST EMILION GRAND CRU </p>
+      </ion-item>
+      <ion-item >
+        Type
+        <ion-note item-end>
+          Vin Rouge 
+        </ion-note>
+      </ion-item>
+      <ion-item >
+        Prix
+        <ion-note item-end>
+          39,50€
+        </ion-note>
+      </ion-item>
+      <ion-item >
+        AOC
+        <ion-note item-end>
+         OUI
+        </ion-note>
+      </ion-item>
+      <ion-item >
+        Quantité
+          <ion-note item-end>
+         51 
+        </ion-note>
+      </ion-item>
+      <ion-item>
+
+        <ion-range [(ngModel)]="brightness" min = "0"  step = "1" snaps = "true" max = "10" pin = "true " >
+          <ion-icon range-left small name="wine"></ion-icon>
+          <ion-icon range-right name="pint"></ion-icon>  
+        </ion-range>
+        
+      </ion-item>
+      <button ion-button >A la tienne ! </button>
+  </ion-list>
+</ion-content>
