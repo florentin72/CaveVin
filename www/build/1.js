@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 290:
+/***/ 331:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoPageModule", function() { return InfoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListvinPageModule", function() { return ListvinPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__info__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listvin__ = __webpack_require__(336);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var InfoPageModule = /** @class */ (function () {
-    function InfoPageModule() {
+var ListvinPageModule = /** @class */ (function () {
+    function ListvinPageModule() {
     }
-    InfoPageModule = __decorate([
+    ListvinPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__info__["a" /* InfoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__listvin__["a" /* ListvinPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__info__["a" /* InfoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__listvin__["a" /* ListvinPage */]),
             ],
         })
-    ], InfoPageModule);
-    return InfoPageModule;
+    ], ListvinPageModule);
+    return ListvinPageModule;
 }());
 
-//# sourceMappingURL=info.module.js.map
+//# sourceMappingURL=listvin.module.js.map
 
 /***/ }),
 
-/***/ 294:
+/***/ 336:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InfoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListvinPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vin_service_vin_service__ = __webpack_require__(216);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,30 +57,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Generated class for the InfoPage page.
+ * Generated class for the ListvinPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var InfoPage = /** @class */ (function () {
-    function InfoPage(navCtrl, navParams) {
+var ListvinPage = /** @class */ (function () {
+    function ListvinPage(navCtrl, navParams, service) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.service = service;
+        this.TAG = "PageListVin";
+        var list = this.service.getListVin;
+        console.log(list.toString);
+        console.log(this.TAG + "constructeur \n " + service.getListVin);
     }
-    InfoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad InfoPage');
+    ListvinPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ListvinPage');
     };
-    InfoPage = __decorate([
+    ListvinPage.prototype.onClickInfo = function () {
+        this.navCtrl.push('InfoPage');
+    };
+    ListvinPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-info',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\info\info.html"*/'<!--\n  Generated template for the InfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Description\n    </ion-title>\n   \n  \n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n      <ion-item>\n        <ion-avatar item-start>\n          <img src="img/bottle.jpg">\n        </ion-avatar>\n        <h2>Chateau la Domique 2011</h2>\n        <p>ST EMILION GRAND CRU </p>\n      </ion-item>\n      <ion-item >\n        Type\n        <ion-note item-end>\n          Vin Rouge \n        </ion-note>\n      </ion-item>\n      <ion-item >\n        Prix\n        <ion-note item-end>\n          39,50€\n        </ion-note>\n      </ion-item>\n      <ion-item >\n        AOC\n        <ion-note item-end>\n         OUI\n        </ion-note>\n      </ion-item>\n      <ion-item >\n        Quantité\n          <ion-note item-end>\n         51 \n        </ion-note>\n      </ion-item>\n      <ion-item>\n\n        <ion-range [(ngModel)]="brightness" min = "0"  step = "1" snaps = "true" max = "10" pin = "true " >\n          <ion-icon range-left small name="wine"></ion-icon>\n          <ion-icon range-right name="pint"></ion-icon>  \n        </ion-range>\n        \n      </ion-item>\n      <button ion-button >A la tienne ! </button>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\info\info.html"*/,
+            selector: 'page-listvin',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\listvin\listvin.html"*/'<!--\n  Generated template for the ListvinPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>listvin</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail item-start>\n        <img src="img/bottle.jpg">\n      </ion-thumbnail>\n      <h2>Vin 1 </h2>\n      <p>quantité </p>\n      <button ion-button clear item-end  (click) = "onClickInfo()">View</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\listvin\listvin.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
-    ], InfoPage);
-    return InfoPage;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_vin_service_vin_service__["a" /* VinServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_vin_service_vin_service__["a" /* VinServiceProvider */]) === "function" && _c || Object])
+    ], ListvinPage);
+    return ListvinPage;
+    var _a, _b, _c;
 }());
 
-//# sourceMappingURL=info.js.map
+//# sourceMappingURL=listvin.js.map
 
 /***/ })
 

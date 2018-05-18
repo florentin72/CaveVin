@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { VinServiceProvider } from '../../providers/vin-service/vin-service';
+import { Vin } from '../../model/vin';
+import * as firebase from 'firebase'
+import { FirebaseListObservable } from 'angularfire2/database';
+
 
 /**
  * Generated class for the ListvinPage page.
@@ -15,7 +20,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ListvinPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+readonly TAG = "PageListVin";
+listVins :FirebaseListObservable<any[]>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider) {
+
+    var list = this.service.getListVin;
+
+    console.log(list.toString);
+    
+  
+    console.log(this.TAG + "constructeur \n " + service.getListVin);
+    
   }
 
   ionViewDidLoad() {

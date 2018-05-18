@@ -15,16 +15,15 @@ export class MyApp {
   rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    var config = {
+    const  config = {
       apiKey: "AIzaSyBryHy67Y4DEVlbn-rGBsxmd9Po8oumaRE",
       authDomain: "cavevin-469f0.firebaseapp.com",
       databaseURL: "https://cavevin-469f0.firebaseio.com",
       projectId: "cavevin-469f0",
       storageBucket: "",
       messagingSenderId: "605535861249"
-    };
-    firebase.initializeApp(config);
-    
+    };  firebase.initializeApp(config);
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

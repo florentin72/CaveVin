@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase'
-import { ThrowStmt } from '@angular/compiler';
+
 
 @Component({
   selector: 'page-home',
@@ -24,15 +24,24 @@ export class HomePage {
 
   }
  
-   writeUserData(userId, name, email) {
+  writeUserData(userId, name, email) {
+
+     
+      
+
+      if (firebase.database().ref('users/' + userId).key == null )
+  {
     firebase.database().ref('users/' + userId).set({
       username: name,
       email: email,
     
     });
+    console.log("WriteUserData un utilisateur a ete ajouté");
+
+  }
   }
 
-  onClickAccueil(){
+  connexion(){
 
 
 
@@ -57,14 +66,13 @@ export class HomePage {
         console.log("il y a un utilisateur son id est :  " + uid);
                       // this value to authenticate with your backend server, if
                       // you have one. Use User.getToken() instead.
-
                       
 
 
 
 
     }
-    this.writeUserData(uid,name,email);
+    //this.writeUserData(uid,name,email);
     console.log("recuperation  d'info " + firebase.auth().signInAndRetrieveDataWithEmailAndPassword(this.username,this.password));
     
     console.log(`${this.TAG} onClickAccueil ${"le mot de passe est bon"}`);
@@ -95,7 +103,7 @@ export class HomePage {
 
       if (this.mdp1 == this.mdp2){
        firebase.auth().createUserWithEmailAndPassword(this.mail,this.mdp1);
-
+     
        this.navCtrl.push('AccueilPage');
        
   }

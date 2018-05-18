@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
+import { Vin } from '../../model/vin';
+import {  AngularFireDatabase } from "angularfire2/database";
+import { VinServiceProvider } from '../../providers/vin-service/vin-service';
 
 
 /**
@@ -20,37 +23,29 @@ export class AjoutPage {
   nom : any;
   type : any;
   quantite:number;
-  user : any ;
+
   
   readonly TAG:string = "PageAjout";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.user = firebase.auth().currentUser;
-    var  uid;
-   let  p = new Personne("f","f","r");
+  constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider) {
 
-    if (this.user != null) {
-      
-      uid = this.user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-        console.log("il y a un utilisateur son id est :  " + uid);
-                      // this value to authenticate with your backend server, if
-                      // you have one. Use User.getToken() instead.
-
-                
-
-    }
    
   }
-  writewine(userId , v : Vin ) {
+  writewine( v : Vin ) {
     console.log("le vin a ajouter" + v.nom);
-    
-    firebase.database().ref('users/' + userId +"/vin"+v.nom).set({
+    this.service.addVin(v).then(ref =>{
+
+
+    });
+
+
+    /*firebase.database().ref('users/' + userId +"/vin"+v.nom).set({
    domaine : v.domaine,
    type : v.type,
    quantite : v.quantite
 
    
-    });
+    });*/
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutPage');
@@ -60,4 +55,14 @@ export class AjoutPage {
   addBottle(){
     console.log(`${this.TAG} addBottle ${this.domaine}`);
     console.log(`${this.TAG} addBottle ${this.nom}`);
-    console.log(`${this.TA
+    console.log(`${this.TAG} addBottle ${this.type}`);
+    console.log(`${this.TAG} addBottle ${this.quantite}`);
+
+    let vin =new Vin(this.nom,this.domaine,this.quantite,this.type,0) ;
+    console.log("vin nom : " + vin.nom);
+
+  this.writewine(new Vin(this.nom,this.domaine,this.quantite,this.type,0));
+
+  }
+
+}
