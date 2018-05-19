@@ -35,14 +35,13 @@ export class VinServiceProvider {
 
    getListVin () : Promise <any>{
 
-
     return new Promise( (resolve, reject) => {
      
         this.listVin.newPropertyIamCreating =this.listVin;
         resolve(this.listVin)
      
      // return this.listVin;
-    }
+    });
   }
 
     addVin (v:Vin){

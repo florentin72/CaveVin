@@ -115,12 +115,12 @@ var HomePage = /** @class */ (function () {
         }
         else {
             console.log(this.TAG + " onClickAccueil " + "erreur de mot passe ");
-            var alert = this.alertCtrl.create({
+            var alert_1 = this.alertCtrl.create({
                 title: 'Erreur de connexion',
                 subTitle: 'Mauvais mode de passe',
                 buttons: ['Dismiss']
             });
-            alert.present();
+            alert_1.present();
         }
     };
     HomePage.prototype.createAccount = function () {
@@ -136,10 +136,9 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar  >\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h1>Se connecter</h1>\n  <ion-list >\n\n    <ion-item>\n      <ion-label stacked>Username</ion-label>\n      <ion-input type="mail"  [(ngModel)]= "username"></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label stacked>mot de passe</ion-label>\n      <ion-input type="password"  [(ngModel)]= "password"></ion-input>\n    </ion-item>\n  \n     \n  \n  </ion-list>\n  <button ion-button (click) = "connexion()"  >se connecter</button>\n \n    <h1>S\'inscrire</h1>\n\n    <ion-list >\n\n      <ion-item>\n        <ion-label stacked>email</ion-label>\n        <ion-input type="email"  [(ngModel)]= "mail"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp1"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>confirmer mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp2"></ion-input>\n      </ion-item>\n    \n    </ion-list>\n    <button ion-button (click) = "createAccount()"  >S\'inscrire</button>\n\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], HomePage);
     return HomePage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -187,17 +186,21 @@ var VinServiceProvider = /** @class */ (function () {
         }
     }
     VinServiceProvider.prototype.getListVin = function () {
-        return this.listVin;
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.listVin.newPropertyIamCreating = _this.listVin;
+            resolve(_this.listVin);
+            // return this.listVin;
+        });
     };
     VinServiceProvider.prototype.addVin = function (v) {
         return this.listVin.push(v);
     };
     VinServiceProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], VinServiceProvider);
     return VinServiceProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=vin-service.js.map

@@ -46,6 +46,8 @@ var ListvinPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vin_service_vin_service__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,6 +60,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the ListvinPage page.
  *
@@ -66,13 +69,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var ListvinPage = /** @class */ (function () {
     function ListvinPage(navCtrl, navParams, service) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.service = service;
         this.TAG = "PageListVin";
-        var list = this.service.getListVin;
-        console.log(list.toString);
-        console.log(this.TAG + "constructeur \n " + service.getListVin);
+        this.ref = __WEBPACK_IMPORTED_MODULE_3_firebase__["database"]().ref('users/TxQfKJWKvthBYAExYu7qucnKaoQ2/');
+        // Récupération de la liste des pinards
+        this.ref.on('value', function (ItemSnapShot) {
+            ItemSnapShot.forEach(function (ItemSnap) {
+                _this.listVins.push(ItemSnap.val());
+                return false;
+            });
+        });
+        console.log(this.TAG + "constructeur \n " + this.listVins);
     }
     ListvinPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ListvinPage');

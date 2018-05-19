@@ -22,14 +22,26 @@ export class ListvinPage {
 
 readonly TAG = "PageListVin";
 listVins :FirebaseListObservable<any[]>;
+
+
+ref : firebase.database.Reference; 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider) {
 
-    var list = this.service.getListVin;
 
-    console.log(list.toString);
+    this.ref= firebase.database().ref('users/TxQfKJWKvthBYAExYu7qucnKaoQ2/');
+    
+    // Récupération de la liste des pinards
+    this.ref.on('value',ItemSnapShot =>{
+      ItemSnapShot.forEach(ItemSnap =>
+      {
+        this.listVins.push(ItemSnap.val());
+        return false;
+      });      
+    });
     
   
-    console.log(this.TAG + "constructeur \n " + service.getListVin);
+    console.log(this.TAG + "constructeur \n " + this.listVins);
     
   }
 
