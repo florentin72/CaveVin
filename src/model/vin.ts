@@ -1,19 +1,18 @@
 export class Vin {
 
-    localisation : number;
+    //localisation : number;
     nom : string;
     domaine : string;
     quantite : number; 
     type : string;
     prix : number;
-    constructor(  n : string , d : string , q : number, t : string, p : number){
+    constructor(  n : string , d : string , t : string, p : number, q : number){
       
-        this.nom = n;
         this.domaine = d;
         this.nom = n;
         this.type = t;
         this.prix = p;
-
+        this.quantite = q ;
 
     }
 

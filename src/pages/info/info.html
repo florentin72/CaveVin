@@ -16,23 +16,23 @@
 </ion-header>
 <ion-content>
   <ion-list>
-      <ion-item>
+      <ion-item  >
         <ion-avatar item-start>
           <img src="img/bottle.jpg">
         </ion-avatar>
-        <h2>Chateau la Domique 2011</h2>
-        <p>ST EMILION GRAND CRU </p>
+        <h2> {{this.wine.nom}}</h2>
+        <p>{{this.wine.domaine}} </p>
       </ion-item>
       <ion-item >
         Type
         <ion-note item-end>
-          Vin Rouge 
-        </ion-note>
+          {{this.wine.type}}       
+         </ion-note>
       </ion-item>
       <ion-item >
         Prix
         <ion-note item-end>
-          39,50€
+          {{this.wine.prix}}
         </ion-note>
       </ion-item>
       <ion-item >
@@ -44,17 +44,17 @@
       <ion-item >
         Quantité
           <ion-note item-end>
-         51 
+            {{this.wine.quantite}}
         </ion-note>
       </ion-item>
       <ion-item>
 
-        <ion-range [(ngModel)]="brightness" min = "0"  step = "1" snaps = "true" max = "10" pin = "true " >
+        <ion-range [(ngModel)]="brightness" min = "0"  step = "1" snaps = "true" max = {{this.wine.quantite}} pin = "true " >
           <ion-icon range-left small name="wine"></ion-icon>
           <ion-icon range-right name="pint"></ion-icon>  
         </ion-range>
         
       </ion-item>
-      <button ion-button >A la tienne ! </button>
+      <button  (click)="changeQuantite()" ion-button >A la tienne ! </button>
   </ion-list>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase'
+import { Utils } from '../../model/utils';
 
 
 @Component({
@@ -54,24 +55,10 @@ export class HomePage {
   if (firebase.auth().signInWithEmailAndPassword(this.username,this.password).then)
   {
 
-    var user = firebase.auth().currentUser;
-    var name, email, photoUrl, uid, emailVerified;
 
-    if (user != null) {
-      name = user.displayName;
-      email = user.email;
-      photoUrl = user.photoURL;
-      emailVerified = user.emailVerified;
-      uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-        console.log("il y a un utilisateur son id est :  " + uid);
-                      // this value to authenticate with your backend server, if
-                      // you have one. Use User.getToken() instead.
-                      
+    var uid = Utils.getUserId();
 
 
-
-
-    }
     //this.writeUserData(uid,name,email);
     console.log("recuperation  d'info " + firebase.auth().signInAndRetrieveDataWithEmailAndPassword(this.username,this.password));
     

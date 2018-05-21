@@ -16,13 +16,13 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor = "let wine of listRef | async">
       <ion-thumbnail item-start>
         <img src="img/bottle.jpg">
       </ion-thumbnail>
-      <h2>Vin 1 </h2>
+      <h2>{{wine.nom}} </h2>
       <p>quantité </p>
-      <button ion-button clear item-end  (click) = "onClickInfo()">View</button>
+      <button ion-button clear item-end  (click) = "onClickInfo(wine)">View</button>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -23,7 +23,7 @@ export class AjoutPage {
   nom : any;
   type : any;
   quantite:number;
-
+  prix : number;
   
   readonly TAG:string = "PageAjout";
 
@@ -58,10 +58,8 @@ export class AjoutPage {
     console.log(`${this.TAG} addBottle ${this.type}`);
     console.log(`${this.TAG} addBottle ${this.quantite}`);
 
-    let vin =new Vin(this.nom,this.domaine,this.quantite,this.type,0) ;
-    console.log("vin nom : " + vin.nom);
 
-  this.writewine(new Vin(this.nom,this.domaine,this.quantite,this.type,0));
+  this.writewine(new Vin(this.nom,this.domaine,this.type,this.prix,this.quantite));
 
   }
 

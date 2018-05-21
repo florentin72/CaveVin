@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VinServiceProvider } from '../../providers/vin-service/vin-service';
 import { Vin } from '../../model/vin';
 import * as firebase from 'firebase'
-import { FirebaseListObservable } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { Utils } from '../../model/utils';
 
 
 /**
@@ -21,15 +22,16 @@ import { FirebaseListObservable } from 'angularfire2/database';
 export class ListvinPage {
 
 readonly TAG = "PageListVin";
-listVins :FirebaseListObservable<any[]>;
+listVins : Vin [] = [];
 
+listRef : FirebaseListObservable<Vin[]>;
+id : string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider,private  db : AngularFireDatabase) {
+this.id = Utils.getUserId();
+this.listRef = this.db.list('users/'+this.id+'/listVin');
+this.listRef.subscribe(x=> console.log("des trucs"+x.length));
 
-ref : firebase.database.Reference; 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider) {
-
-
-    this.ref= firebase.database().ref('users/TxQfKJWKvthBYAExYu7qucnKaoQ2/');
+   /* this.ref= firebase.database().ref("users/tq3svEgOmUTJjCzPAN3zxO8HiAl2/listVin");
     
     // Récupération de la liste des pinards
     this.ref.on('value',ItemSnapShot =>{
@@ -38,10 +40,15 @@ ref : firebase.database.Reference;
         this.listVins.push(ItemSnap.val());
         return false;
       });      
-    });
-    
-  
-    console.log(this.TAG + "constructeur \n " + this.listVins);
+    });*/
+
+
+
+
+
+    console.log(`${this.TAG} listVins taille: ${this.listVins.length}`);
+
+    console.log(this.TAG + "constructeur \n " + this.listVins[0]);
     
   }
 
@@ -49,9 +56,12 @@ ref : firebase.database.Reference;
     console.log('ionViewDidLoad ListvinPage');
   }
 
-  onClickInfo(){
+  onClickInfo(wine : Vin ){
 
-    this.navCtrl.push('InfoPage');
+
+    
+    
+    this.navCtrl.push('InfoPage',{theWine : wine} );
 
 
   }

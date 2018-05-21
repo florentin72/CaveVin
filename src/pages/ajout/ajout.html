@@ -46,6 +46,10 @@
         <ion-label>Quantité</ion-label>
         <ion-input type = "number" min = "1"  [(ngModel)]="quantite"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Prix</ion-label>
+      <ion-input type = "number" min = "0"  [(ngModel)]="prix"></ion-input>
+  </ion-item>
 
 </ion-list> 
 <button ion-button  (click)="addBottle()"> valider </button> 

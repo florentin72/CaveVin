@@ -15,7 +15,7 @@ export class VinServiceProvider {
   
 
     private user : any ;
-    private    listVin ; 
+    private    listVin : any; 
     constructor(private db : AngularFireDatabase){
       this.user = firebase.auth().currentUser;
       var  uid;
@@ -27,7 +27,7 @@ export class VinServiceProvider {
                         // this value to authenticate with your backend server, if
                         // you have one. Use User.getToken() instead.
   
-                       this.listVin =this.db.list('users/'+uid+'/listVin' ) ; 
+                       this.listVin  =this.db.list('users/'+uid+'/listVin' ) ; 
   
       }
       
