@@ -5,6 +5,8 @@ import { Vin } from '../../model/vin';
 import * as firebase from 'firebase'
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Utils } from '../../model/utils';
+import { stringify } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs/Observable';
 
 
 /**
@@ -29,26 +31,14 @@ id : string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider,private  db : AngularFireDatabase) {
 this.id = Utils.getUserId();
 this.listRef = this.db.list('users/'+this.id+'/listVin');
-this.listRef.subscribe(x=> console.log("des trucs"+x.length));
+this.listRef.subscribe(x=> console.log("taille du tableau "+x.keys()  ));
+console.log("tentative de récupération de l'id d'un noeud " +firebase.database().ref().child('users/TxQfKJWKvthBYAExYu7qucnKaoQ2/listVin').child);
 
-   /* this.ref= firebase.database().ref("users/tq3svEgOmUTJjCzPAN3zxO8HiAl2/listVin");
-    
-    // Récupération de la liste des pinards
-    this.ref.on('value',ItemSnapShot =>{
-      ItemSnapShot.forEach(ItemSnap =>
-      {
-        this.listVins.push(ItemSnap.val());
-        return false;
-      });      
-    });*/
+
+console.log(this.TAG + "constructeur reference du noeud :  " + this.listRef);
 
 
 
-
-
-    console.log(`${this.TAG} listVins taille: ${this.listVins.length}`);
-
-    console.log(this.TAG + "constructeur \n " + this.listVins[0]);
     
   }
 
@@ -56,9 +46,10 @@ this.listRef.subscribe(x=> console.log("des trucs"+x.length));
     console.log('ionViewDidLoad ListvinPage');
   }
 
-  onClickInfo(wine : Vin ){
+  onClickInfo(wine : Vin, ref : string ){
 
 
+    console.log(this.TAG + " onClickInfo " + ref );
     
     
     this.navCtrl.push('InfoPage',{theWine : wine} );

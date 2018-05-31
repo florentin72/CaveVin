@@ -1,4 +1,7 @@
 import * as firebase from 'firebase'
+import { FirebaseListObservable } from 'angularfire2/database';
+import { Vin } from './vin';
+import { HomePage } from '../pages/home/home';
 export class Utils {
 
 public static getUserId(): string{

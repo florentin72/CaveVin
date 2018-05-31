@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AjoutPageModule", function() { return AjoutPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ajout__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ajout__ = __webpack_require__(335);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,15 +38,15 @@ var AjoutPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 334:
+/***/ 335:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AjoutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_vin__ = __webpack_require__(335);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vin_service_vin_service__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_vin__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vin_service_vin_service__ = __webpack_require__(217);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -94,34 +94,35 @@ var AjoutPage = /** @class */ (function () {
         console.log(this.TAG + " addBottle " + this.nom);
         console.log(this.TAG + " addBottle " + this.type);
         console.log(this.TAG + " addBottle " + this.quantite);
-        this.writewine(new __WEBPACK_IMPORTED_MODULE_2__model_vin__["a" /* Vin */](this.nom, this.domaine, this.type, this.prix, this.quantite));
+        console.log(this.TAG + " addBottle " + this.commentaire);
+        this.writewine(new __WEBPACK_IMPORTED_MODULE_2__model_vin__["a" /* Vin */](this.nom, this.domaine, this.type, this.prix, this.quantite, this.commentaire));
     };
     AjoutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ajout',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/'<!--\n  Generated template for the AjoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>ajout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <h1>Ajouter une bouteille</h1>\n  <ion-list>\n\n\n    <ion-item>\n        <ion-label>Domaine</ion-label>\n        <ion-input type = "text"[(ngModel)]="domaine" ></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Nom</ion-label>\n        <ion-input id= "name" type = "text" [(ngModel)]= "nom"> </ion-input>\n    </ion-item>\n\n\n\n    <ion-item>\n        <ion-label>Type de Vin </ion-label>\n      <ion-select  [(ngModel)]="type">\n          \n\n        <ion-option value="rouge">Vin Rouge</ion-option>\n        <ion-option value="blanc">Vin Blanc</ion-option>\n        <ion-option value="rose">Vin Rosé</ion-option>\n      </ion-select>\n    </ion-item>\n\n\n    <ion-item>\n        <ion-label>Quantité</ion-label>\n        <ion-input type = "number" min = "1"  [(ngModel)]="quantite"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Prix</ion-label>\n      <ion-input type = "number" min = "0"  [(ngModel)]="prix"></ion-input>\n  </ion-item>\n\n</ion-list> \n<button ion-button  (click)="addBottle()"> valider </button> \n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/,
+            selector: 'page-ajout',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/'<!--\n  Generated template for the AjoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n    \n  <ion-col>\n    <div>Cave</div>\n  </ion-col>\n \n \n</ion-header>\n\n\n<ion-content padding>\n    <h1>Ajouter une bouteille</h1>\n  <ion-list>\n\n\n    <ion-item>\n        <ion-label>Domaine</ion-label>\n        <ion-input type = "text"[(ngModel)]="domaine" ></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Nom</ion-label>\n        <ion-input id= "name" type = "text" [(ngModel)]= "nom"> </ion-input>\n    </ion-item>\n\n\n\n    <ion-item>\n        <ion-label>Type de Vin </ion-label>\n      <ion-select  [(ngModel)]="type">\n          \n\n        <ion-option value="rouge">Vin Rouge</ion-option>\n        <ion-option value="blanc">Vin Blanc</ion-option>\n        <ion-option value="rose">Vin Rosé</ion-option>\n      </ion-select>\n    </ion-item>\n\n\n    <ion-item>\n        <ion-label>Quantité</ion-label>\n        <ion-input type = "number" min = "1"  [(ngModel)]="quantite"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Prix</ion-label>\n      <ion-input type = "number" min = "0"  [(ngModel)]="prix"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Commentaire</ion-label>\n    <ion-input type = "textarea" [(ngModel)]="commentaire"></ion-input>\n</ion-item>\n\n\n</ion-list> \n<button ion-button  (click)="addBottle()"> valider </button> \n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_vin_service_vin_service__["a" /* VinServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_vin_service_vin_service__["a" /* VinServiceProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_vin_service_vin_service__["a" /* VinServiceProvider */]])
     ], AjoutPage);
     return AjoutPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=ajout.js.map
 
 /***/ }),
 
-/***/ 335:
+/***/ 336:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Vin; });
 var Vin = /** @class */ (function () {
-    function Vin(n, d, t, p, q) {
+    function Vin(n, d, t, p, q, com) {
         this.domaine = d;
         this.nom = n;
         this.type = t;
         this.prix = p;
         this.quantite = q;
+        this.commentaire = com;
     }
     return Vin;
 }());

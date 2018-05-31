@@ -24,7 +24,7 @@ export class AjoutPage {
   type : any;
   quantite:number;
   prix : number;
-  
+  commentaire : string;
   readonly TAG:string = "PageAjout";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider) {
@@ -57,9 +57,11 @@ export class AjoutPage {
     console.log(`${this.TAG} addBottle ${this.nom}`);
     console.log(`${this.TAG} addBottle ${this.type}`);
     console.log(`${this.TAG} addBottle ${this.quantite}`);
+    console.log(`${this.TAG} addBottle ${this.commentaire}`);
 
 
-  this.writewine(new Vin(this.nom,this.domaine,this.type,this.prix,this.quantite));
+
+  this.writewine(new Vin(this.nom,this.domaine,this.type,this.prix,this.quantite, this.commentaire));
 
   }
 

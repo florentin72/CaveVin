@@ -1,9 +1,17 @@
 page-accueil {
-
+ 
+    
+    ion-header
+    {
+        background-color: color($colors, header);
+    
+    }
 
     .card-background-page {
+      background-color: color($colors, fond);;
 
-        ion-card {
+
+        ion-card{
           position: relative;
           text-align: center;
         }
@@ -24,6 +32,10 @@ page-accueil {
           width: 100%;
           color: #fff;
         }
-      
+       
       }
+     
+
+    
+    
 }

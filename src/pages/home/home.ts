@@ -42,7 +42,7 @@ export class HomePage {
   }
   }
 
-  connexion(){
+  async connexion(){
 
 
 
@@ -64,7 +64,7 @@ export class HomePage {
     
     console.log(`${this.TAG} onClickAccueil ${"le mot de passe est bon"}`);
 
-  this.navCtrl.push('AccueilPage');
+  this.navCtrl.setRoot('AccueilPage');
  
 
   }
@@ -85,13 +85,13 @@ export class HomePage {
 
   }
 
-  createAccount(){
+  async createAccount(){
 
 
       if (this.mdp1 == this.mdp2){
        firebase.auth().createUserWithEmailAndPassword(this.mail,this.mdp1);
-     
-       this.navCtrl.push('AccueilPage');
+       
+       this.navCtrl.setRoot('AccueilPage');
        
   }
 

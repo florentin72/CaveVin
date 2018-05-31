@@ -17,6 +17,7 @@ import { Vin } from '../../model/vin';
 export class InfoPage {
   readonly TAG = "PageInfo"
   wine : Vin;
+  brightness : number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
    this.wine = this.navParams.get("theWine");
    console.log(this.TAG + "constructeur , vin recupérer : "+ this.wine.nom);
@@ -28,4 +29,23 @@ export class InfoPage {
     console.log('ionViewDidLoad InfoPage');
   }
 
+
+  changeQuantite(){
+
+    //TODO récuperer l'id dans firebase de l'objet 
+
+    if (this.wine.quantite - this.brightness == 0 ){
+
+        //TODO delete de firebase 
+
+
+    }
+    else {
+
+        //TODO update firebase 
+    }
+
+
+
+  }
 }

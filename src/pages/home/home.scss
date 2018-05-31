@@ -1,4 +1,33 @@
 page-home{
-
     
+    
+    
+    ion-header
+    {
+        background-color: color($colors, header);
+    
+    }
+  
+
+   div{
+
+    background-color: red;
+
+   }
+
+    h1{
+
+    text-align: center;
+    font-size-adjust: inherit;
+    color : black;
+
+
+    }
+
+    button{
+
+            align-content: center;
+    }
+   
+
 }

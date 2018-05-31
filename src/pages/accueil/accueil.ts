@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { Vin } from '../../model/vin';
+import { Utils } from '../../model/utils';
+import * as firebase from 'firebase'
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the AccueilPage page.
@@ -14,11 +19,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'accueil.html',
 })
 export class AccueilPage {
+  readonly TAG : string = "PageAccueil";
+  listVins : Vin [] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  listRef : FirebaseListObservable<Vin[]>;
+  id : string;
+  nbVin : any;
+  constructor(public navCtrl: NavController, public navParams: NavParams ,private  db : AngularFireDatabase) {
+   
+    firebase.auth().signInWithEmailAndPassword("k@gmail.com","root72");
+
+    this.id = Utils.getUserId();
+    this.listRef = this.db.list('users/'+this.id+'/listVin');
+    this.listRef.subscribe(x=>   this.nbVin = x.length);
+    console.log("nombre de bouteilles : " + this.nbVin);
+    
   }
 
   ionViewDidLoad() {
+
+
     console.log('ionViewDidLoad AccueilPage');
   }
 
@@ -31,5 +51,15 @@ export class AccueilPage {
     this.navCtrl.push('AjoutPage');
 
   }
+  logout(){
 
+console.log("on va se deconnecter");
+    firebase.auth().signOut();
+    this.navCtrl.setRoot(HomePage);
+  }
+
+  onClickCompte(){
+this.navCtrl.push('ComptePage');
+
+  }
 }
