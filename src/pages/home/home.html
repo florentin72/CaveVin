@@ -10,12 +10,11 @@
   
 
 
-<ion-content padding >
-    <ion-col>
-
+<ion-content padding class= "master" >
+    <div class = "corps">
   <h1>Se connecter</h1>
-
-    <ion-item>
+      <ion-list>
+    <ion-item class = "item">
 
       <ion-label stacked>Username</ion-label>
       <ion-input type="mail"  [(ngModel)]= "username"></ion-input>
@@ -26,9 +25,8 @@
       <ion-input type="password"  [(ngModel)]= "password"></ion-input>
     </ion-item>
   
-     
-  
   </ion-list>
+  
   <button ion-button (click) = "connexion()"  >se connecter</button>
  
     <h1>S'inscrire</h1>
@@ -55,6 +53,7 @@
 
 
 
+     </div>
 
 
 </ion-content>

@@ -30578,6 +30578,10 @@ page-ajout ion-header {
   background-color: #0F838C;
 }
 
+page-ajout .master {
+  background-color: #cac6cf;
+}
+
 page-compte ion-header {
   background-color: #0F838C;
 }
@@ -30586,8 +30590,8 @@ page-home ion-header {
   background-color: #0F838C;
 }
 
-page-home div {
-  background-color: red;
+page-home .master {
+  background-color: #cac6cf;
 }
 
 page-home h1 {
@@ -30606,6 +30610,14 @@ page-info ion-header {
   background-color: #0F838C;
 }
 
+page-info .master {
+  background-color: #cac6cf;
+}
+
 page-listvin ion-header {
   background-color: #0F838C;
+}
+
+page-listvin .master {
+  background-color: #cac6cf;
 }
