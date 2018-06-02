@@ -154,19 +154,19 @@ var map = {
 		4
 	],
 	"../pages/ajout/ajout.module": [
-		330,
+		333,
 		0
 	],
 	"../pages/compte/compte.module": [
-		331,
+		330,
 		3
 	],
 	"../pages/info/info.module": [
-		332,
+		331,
 		2
 	],
 	"../pages/listvin/listvin.module": [
-		333,
+		332,
 		1
 	]
 };
@@ -352,10 +352,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/accueil/accueil.module#AccueilPageModule', name: 'AccueilPage', segment: 'accueil', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/ajout/ajout.module#AjoutPageModule', name: 'AjoutPage', segment: 'ajout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/compte/compte.module#ComptePageModule', name: 'ComptePage', segment: 'compte', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/info/info.module#InfoPageModule', name: 'InfoPage', segment: 'info', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/listvin/listvin.module#ListvinPageModule', name: 'ListvinPage', segment: 'listvin', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/listvin/listvin.module#ListvinPageModule', name: 'ListvinPage', segment: 'listvin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/ajout/ajout.module#AjoutPageModule', name: 'AjoutPage', segment: 'ajout', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
