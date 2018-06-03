@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Item } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Vin } from '../../model/vin';
 import { Utils } from '../../model/utils';
 import * as firebase from 'firebase'
 import { HomePage } from '../home/home';
+import { iterateListLike } from '@angular/core/src/change_detection/change_detection_util';
 
 /**
  * Generated class for the AccueilPage page.
@@ -25,14 +26,32 @@ export class AccueilPage {
   listRef : FirebaseListObservable<Vin[]>;
   id : string;
   nbVin : any;
+  pers : Personne;
+  prixTot : number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams ,private  db : AngularFireDatabase) {
    
-    firebase.auth().signInWithEmailAndPassword("k@gmail.com","root72");
+
+
+    
 
     this.id = Utils.getUserId();
     this.listRef = this.db.list('users/'+this.id+'/listVin');
-    this.listRef.subscribe(x=>   this.nbVin = x.length);
-    console.log("nombre de bouteilles : " + this.nbVin);
+    this.listRef.subscribe(items => { 
+      const allKeys  = items.map(item => console.log(item.prix)
+      
+     
+       );
+       let i : number = 0
+       while ( i<35){
+       console.log("all  keys : "+allKeys.keys().next().value + "passage numero : " + i) ;
+        i++;
+       }
+       this.nbVin = Item.length;
+    });
+     
+    
+    
+    
     
   }
 
@@ -59,7 +78,7 @@ console.log("on va se deconnecter");
   }
 
   onClickCompte(){
-this.navCtrl.push('ComptePage');
+this.navCtrl.push('ComptePage', {theList : this.listRef});
 
   }
 }

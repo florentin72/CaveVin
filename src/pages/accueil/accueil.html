@@ -13,7 +13,6 @@
  
    
     <ion-icon class="logout" name="log-out" (click) = "logout()"></ion-icon>
-        <ion-icon class="person" name="person" (click) = "onClickCompte()"></ion-icon>
 
  
 </ion-header>
@@ -38,5 +37,10 @@
     
   </ion-card>
 
+  <ion-card   (click) = "onClickCompte()">
+    <img src="img/info.jpg"/>
+    <div class="card-title">Informations sur la cave</div>
+    
+  </ion-card>
 
 </ion-content>

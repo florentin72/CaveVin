@@ -45,7 +45,8 @@ export class VinServiceProvider {
   }
 
     addVin (v:Vin){
-      return this.listVin.push(v);
+      return this.listVin.push(v)
+      ;
     }
 
 }

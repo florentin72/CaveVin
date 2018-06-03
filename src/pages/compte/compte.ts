@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseListObservable } from 'angularfire2/database';
+import { Vin } from '../../model/vin';
 
 /**
  * Generated class for the ComptePage page.
@@ -14,8 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'compte.html',
 })
 export class ComptePage {
-
+  listVin : FirebaseListObservable<Vin[]>;
+  readonly TAG  : string = "PageCompte";
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.listVin = this.navParams.get("theList");
+    console.log(this.TAG + this.listVin);
+    this.listVin.subscribe(x=> console.log("taille du tableau " ));
+
+
+  
+
   }
 
   ionViewDidLoad() {

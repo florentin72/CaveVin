@@ -5,12 +5,11 @@ class Personne {
     vin1 : string;
     //listVin : Array <Vin>;
 
-    constructor ( e : string , p : string , v : string){
+    constructor ( e : string , p : string ){
 
 
         this.email = e ; 
         this.password = p ;
-        this.vin1 = v; 
     }
     
 

@@ -102,24 +102,20 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.createAccount = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                if (this.mdp1 == this.mdp2) {
-                    __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().createUserWithEmailAndPassword(this.mail, this.mdp1);
-                    this.navCtrl.setRoot('AccueilPage');
-                }
-                else {
-                    alert("les mots de passes sont différents");
-                }
-                return [2 /*return*/];
-            });
-        });
+        if (this.mdp1 == this.mdp2) {
+            __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().createUserWithEmailAndPassword(this.mail, this.mdp1);
+            __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().signInWithEmailAndPassword(this.mail, this.mdp1);
+            this.navCtrl.setRoot('AccueilPage');
+        }
+        else {
+            alert("les mots de passes sont différents");
+        }
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/'\n  <ion-header>\n    \n      <ion-col>\n        <div>Cave</div>\n      </ion-col>\n     \n     \n</ion-header>\n  \n\n\n<ion-content padding class= "master" >\n    <div class = "corps">\n  <h1>Se connecter</h1>\n      <ion-list>\n    <ion-item class = "item">\n\n      <ion-label stacked>Username</ion-label>\n      <ion-input type="mail"  [(ngModel)]= "username"></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label stacked>mot de passe</ion-label>\n      <ion-input type="password"  [(ngModel)]= "password"></ion-input>\n    </ion-item>\n  \n  </ion-list>\n  \n  <button ion-button (click) = "connexion()"  >se connecter</button>\n \n    <h1>S\'inscrire</h1>\n\n    <ion-list >\n\n      <ion-item>\n        <ion-label stacked>email</ion-label>\n        <ion-input type="email"  [(ngModel)]= "mail"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp1"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>confirmer mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp2"></ion-input>\n      </ion-item>\n\n    </ion-list>\n    <button ion-button (click) = "createAccount()"  >S\'inscrire</button>\n\n\n\n     </div>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -154,19 +150,19 @@ var map = {
 		4
 	],
 	"../pages/ajout/ajout.module": [
-		333,
+		330,
 		0
 	],
 	"../pages/compte/compte.module": [
-		330,
+		331,
 		3
 	],
 	"../pages/info/info.module": [
-		331,
+		332,
 		2
 	],
 	"../pages/listvin/listvin.module": [
-		332,
+		333,
 		1
 	]
 };
@@ -352,10 +348,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/accueil/accueil.module#AccueilPageModule', name: 'AccueilPage', segment: 'accueil', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/ajout/ajout.module#AjoutPageModule', name: 'AjoutPage', segment: 'ajout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/compte/compte.module#ComptePageModule', name: 'ComptePage', segment: 'compte', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/info/info.module#InfoPageModule', name: 'InfoPage', segment: 'info', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/listvin/listvin.module#ListvinPageModule', name: 'ListvinPage', segment: 'listvin', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/ajout/ajout.module#AjoutPageModule', name: 'AjoutPage', segment: 'ajout', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/listvin/listvin.module#ListvinPageModule', name: 'ListvinPage', segment: 'listvin', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
@@ -429,7 +425,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());

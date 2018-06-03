@@ -11,14 +11,14 @@ import { Utils } from '../../model/utils';
 export class HomePage {
   public items: Array<any> = [];
   public user: firebase.database.Reference ;
-  mail : any;
-  mdp1 : any;
-  mdp2: any;
+  mail : string;
+  mdp1 : string;
+  mdp2: string;
   utilisateur: any;
-  test: any;
+  test: string;
   readonly TAG:string = 'PageHome';
-  password : any;
-  username: any;
+  password : string;
+  username: string;
 
   constructor(public navCtrl: NavController,private alertCtrl: AlertController) {
     console.log(`${this.TAG} constructor`);
@@ -85,12 +85,12 @@ export class HomePage {
 
   }
 
-  async createAccount(){
+   createAccount(){
 
 
       if (this.mdp1 == this.mdp2){
        firebase.auth().createUserWithEmailAndPassword(this.mail,this.mdp1);
-       
+       firebase.auth().signInWithEmailAndPassword(this.mail,this.mdp1);
        this.navCtrl.setRoot('AccueilPage');
        
   }
