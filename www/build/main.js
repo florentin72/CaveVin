@@ -9,7 +9,7 @@ webpackJsonp([5],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_utils__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_utils__ = __webpack_require__(217);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,7 +67,7 @@ var HomePage = /** @class */ (function () {
         console.log(this.TAG + " constructor");
     }
     HomePage.prototype.writeUserData = function (userId, name, email) {
-        if (__WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('users/' + userId).key == null) {
+        if (__WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('users/' + userId) == null) {
             __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('users/' + userId).set({
                 username: name,
                 email: email,
@@ -115,7 +115,7 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/'\n  <ion-header>\n    \n      <ion-col>\n        <div>Cave</div>\n      </ion-col>\n     \n     \n</ion-header>\n  \n\n\n<ion-content padding class= "master" >\n    <div class = "corps">\n  <h1>Se connecter</h1>\n      <ion-list>\n    <ion-item class = "item">\n\n      <ion-label stacked>Username</ion-label>\n      <ion-input type="mail"  [(ngModel)]= "username"></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label stacked>mot de passe</ion-label>\n      <ion-input type="password"  [(ngModel)]= "password"></ion-input>\n    </ion-item>\n  \n  </ion-list>\n  \n  <button ion-button (click) = "connexion()"  >se connecter</button>\n \n    <h1>S\'inscrire</h1>\n\n    <ion-list >\n\n      <ion-item>\n        <ion-label stacked>email</ion-label>\n        <ion-input type="email"  [(ngModel)]= "mail"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp1"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>confirmer mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp2"></ion-input>\n      </ion-item>\n\n    </ion-list>\n    <button ion-button (click) = "createAccount()"  >S\'inscrire</button>\n\n\n\n     </div>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -186,39 +186,6 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Utils; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase__);
-
-var Utils = /** @class */ (function () {
-    function Utils() {
-    }
-    Utils.getUserId = function () {
-        var user = __WEBPACK_IMPORTED_MODULE_0_firebase__["auth"]().currentUser;
-        var name, email, photoUrl, uid, emailVerified;
-        if (user != null) {
-            name = user.displayName;
-            email = user.email;
-            photoUrl = user.photoURL;
-            emailVerified = user.emailVerified;
-            uid = user.uid; // The user's ID, unique to the Firebase project. Do NOT use
-            console.log("il y a un utilisateur son id est :  " + uid);
-            // this value to authenticate with your backend server, if
-            // you have one. Use User.getToken() instead.
-        }
-        return uid;
-    };
-    return Utils;
-}());
-
-//# sourceMappingURL=utils.js.map
-
-/***/ }),
-
-/***/ 217:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VinServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(115);
@@ -245,6 +212,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var VinServiceProvider = /** @class */ (function () {
     function VinServiceProvider(db) {
         this.db = db;
+        this.listVins = [];
         this.user = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser;
         var uid;
         if (this.user != null) {
@@ -257,11 +225,15 @@ var VinServiceProvider = /** @class */ (function () {
     }
     VinServiceProvider.prototype.getListVin = function () {
         var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.listVin.newPropertyIamCreating = _this.listVin;
-            resolve(_this.listVin);
-            // return this.listVin;
+        this.ref = __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref('users/tq3svEgOmUTJjCzPAN3zxO8HiAl2/listVin');
+        // Récupération de la liste des animaux
+        this.ref.on('value', function (ItemSnapShot) {
+            ItemSnapShot.forEach(function (ItemSnap) {
+                _this.listVins.push(ItemSnap.val());
+                return false;
+            });
         });
+        return this.listVins;
     };
     VinServiceProvider.prototype.addVin = function (v) {
         return this.listVin.push(v);
@@ -274,6 +246,39 @@ var VinServiceProvider = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=vin-service.js.map
+
+/***/ }),
+
+/***/ 217:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Utils; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase__);
+
+var Utils = /** @class */ (function () {
+    function Utils() {
+    }
+    Utils.getUserId = function () {
+        var user = __WEBPACK_IMPORTED_MODULE_0_firebase__["auth"]().currentUser;
+        var name, email, photoUrl, uid, emailVerified;
+        if (user != null) {
+            name = user.displayName;
+            email = user.email;
+            photoUrl = user.photoURL;
+            emailVerified = user.emailVerified;
+            uid = user.uid; // The user's ID, unique to the Firebase project. Do NOT use
+            console.log("il y a un utilisateur son id est :  " + uid);
+            // this value to authenticate with your backend server, if
+            // you have one. Use User.getToken() instead.
+        }
+        return uid;
+    };
+    return Utils;
+}());
+
+//# sourceMappingURL=utils.js.map
 
 /***/ }),
 
@@ -306,7 +311,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2__ = __webpack_require__(327);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_firebase__ = __webpack_require__(328);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_vin_service_vin_service__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_vin_service_vin_service__ = __webpack_require__(216);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -425,7 +430,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());

@@ -13,6 +13,8 @@ import * as firebase from 'firebase';
 @Injectable()
 export class VinServiceProvider {
   
+  listVins : Vin [] = [];
+  ref : firebase.database.Reference; 
 
     private user : any ;
     private    listVin : any; 
@@ -33,15 +35,20 @@ export class VinServiceProvider {
       
     }
 
-   getListVin () : Promise <any>{
+   getListVin () : Vin [] {
 
-    return new Promise( (resolve, reject) => {
-     
-        this.listVin.newPropertyIamCreating =this.listVin;
-        resolve(this.listVin)
-     
-     // return this.listVin;
+    this.ref= firebase.database().ref('users/tq3svEgOmUTJjCzPAN3zxO8HiAl2/listVin');
+    
+    // Récupération de la liste des animaux
+    this.ref.on('value',ItemSnapShot =>{
+      ItemSnapShot.forEach(ItemSnap =>
+      {
+        this.listVins.push(ItemSnap.val());
+        return false;
+      });      
     });
+   return this.listVins;
+
   }
 
     addVin (v:Vin){

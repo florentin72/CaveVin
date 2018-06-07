@@ -30,7 +30,7 @@ export class HomePage {
      
       
 
-      if (firebase.database().ref('users/' + userId).key == null )
+      if (firebase.database().ref('users/' + userId) == null )
   {
     firebase.database().ref('users/' + userId).set({
       username: name,

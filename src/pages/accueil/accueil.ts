@@ -6,6 +6,8 @@ import { Utils } from '../../model/utils';
 import * as firebase from 'firebase'
 import { HomePage } from '../home/home';
 import { iterateListLike } from '@angular/core/src/change_detection/change_detection_util';
+import { getLocaleExtraDayPeriodRules } from '@angular/common';
+import { VinServiceProvider } from '../../providers/vin-service/vin-service';
 
 /**
  * Generated class for the AccueilPage page.
@@ -22,34 +24,37 @@ import { iterateListLike } from '@angular/core/src/change_detection/change_detec
 export class AccueilPage {
   readonly TAG : string = "PageAccueil";
   listVins : Vin [] = [];
+  ref : firebase.database.Reference; 
 
   listRef : FirebaseListObservable<Vin[]>;
   id : string;
   nbVin : any;
   pers : Personne;
   prixTot : number = 0;
-  constructor(public navCtrl: NavController, public navParams: NavParams ,private  db : AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams ,private  db : AngularFireDatabase,private service : VinServiceProvider) {
    
 
 
     
 
     this.id = Utils.getUserId();
-    this.listRef = this.db.list('users/'+this.id+'/listVin');
-    this.listRef.subscribe(items => { 
-      const allKeys  = items.map(item => console.log(item.prix)
-      
-     
+
+    this.listVins = service.getListVin();
+    console.log(`${this.TAG} listAnnonces taille: ${this.listVins.length}`);
+    
+       this.listRef = this.db.list('users/'+this.id+'/listVin');
+
+
+      this.listRef.subscribe(items => { 
+      const allKeys  = items.map(item => console.log(item.domaine)
        );
-       let i : number = 0
-       while ( i<35){
-       console.log("all  keys : "+allKeys.keys().next().value + "passage numero : " + i) ;
-        i++;
-       }
-       this.nbVin = Item.length;
+      
+    
+       
+       
+       this.nbVin = items.length;
     });
      
-    
     
     
     
