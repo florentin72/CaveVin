@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AjoutPageModule", function() { return AjoutPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ajout__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ajout__ = __webpack_require__(336);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,14 +38,38 @@ var AjoutPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 335:
+/***/ 334:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Vin; });
+var Vin = /** @class */ (function () {
+    function Vin(n, d, t, p, q, com) {
+        this.domaine = d;
+        this.nom = n;
+        this.type = t;
+        this.prix = p;
+        this.quantite = q;
+        this.commentaire = com;
+    }
+    Vin.prototype.toString = function () {
+        return "Le vin " + this.nom + " domaine " + this.domaine + " prix :  " + this.prix;
+    };
+    return Vin;
+}());
+
+//# sourceMappingURL=vin.js.map
+
+/***/ }),
+
+/***/ 336:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AjoutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_vin__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_vin__ = __webpack_require__(334);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vin_service_vin_service__ = __webpack_require__(216);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -107,27 +131,6 @@ var AjoutPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=ajout.js.map
-
-/***/ }),
-
-/***/ 336:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Vin; });
-var Vin = /** @class */ (function () {
-    function Vin(n, d, t, p, q, com) {
-        this.domaine = d;
-        this.nom = n;
-        this.type = t;
-        this.prix = p;
-        this.quantite = q;
-        this.commentaire = com;
-    }
-    return Vin;
-}());
-
-//# sourceMappingURL=vin.js.map
 
 /***/ })
 

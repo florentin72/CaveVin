@@ -45,7 +45,7 @@ export class InfoPage {
         //TODO update firebase 
     }
 
-
+    this.navCtrl.setRoot('AccueilPage');
 
   }
 }

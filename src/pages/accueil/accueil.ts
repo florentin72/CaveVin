@@ -44,17 +44,18 @@ export class AccueilPage {
     
        this.listRef = this.db.list('users/'+this.id+'/listVin');
 
-
-      this.listRef.subscribe(items => { 
-      const allKeys  = items.map(item => console.log(item.domaine)
-       );
+      let v : Vin;
+      this.listRef.subscribe(items => {console.log(items.forEach(element => {
+        console.log(element.nom);
+        v = new Vin(element.nom,element.domaine,element.type,element.prix,element.quantite,element.commentaire);
+        
+        this.listVins.push(v);
+      }));
       
-    
-       
-       
-       this.nbVin = items.length;
+     console.log("La liste de vin recuperer "+this.listVins[0].nom);
     });
      
+    
     
     
     

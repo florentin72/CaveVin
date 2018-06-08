@@ -17,4 +17,10 @@ export class Vin {
         this.commentaire = com;
     }
 
+
+
+    toString() : string {
+
+        return "Le vin " + this.nom + " domaine " + this.domaine + " prix :  " + this.prix;
+    }
 }
