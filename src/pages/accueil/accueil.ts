@@ -56,7 +56,7 @@ export class AccueilPage {
     });
      
     
-    
+    this.nbVin = this.listVins.length;
     
     
   }
@@ -84,7 +84,7 @@ console.log("on va se deconnecter");
   }
 
   onClickCompte(){
-this.navCtrl.push('ComptePage', {theList : this.listRef});
+this.navCtrl.push('ComptePage', {theList : this.listVins});
 
   }
 }
