@@ -44,13 +44,14 @@ var AccueilPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Vin; });
 var Vin = /** @class */ (function () {
-    function Vin(n, d, t, p, q, com) {
+    function Vin(n, d, t, p, q, com, m) {
         this.domaine = d;
         this.nom = n;
         this.type = t;
         this.prix = p;
         this.quantite = q;
         this.commentaire = com;
+        this.millesime = m;
     }
     Vin.prototype.toString = function () {
         return "Le vin " + this.nom + " domaine " + this.domaine + " prix :  " + this.prix;
@@ -112,22 +113,26 @@ var AccueilPage = /** @class */ (function () {
         this.id = __WEBPACK_IMPORTED_MODULE_4__model_utils__["a" /* Utils */].getUserId();
         this.listVins = service.getListVin();
         console.log(this.TAG + " listAnnonces taille: " + this.listVins.length);
+        console.log(__WEBPACK_IMPORTED_MODULE_4__model_utils__["a" /* Utils */].getUserId());
         this.listRef = this.db.list('users/' + this.id + '/listVin');
         var v;
         this.listRef.subscribe(function (items) {
             console.log(items.forEach(function (element) {
                 console.log(element.nom);
-                v = new __WEBPACK_IMPORTED_MODULE_3__model_vin__["a" /* Vin */](element.nom, element.domaine, element.type, element.prix, element.quantite, element.commentaire);
-                _this.listVins.push(v);
+                if (element.nom != undefined) {
+                    v = new __WEBPACK_IMPORTED_MODULE_3__model_vin__["a" /* Vin */](element.nom, element.domaine, element.type, element.prix, element.quantite, element.commentaire, element.millesime);
+                    _this.listVins.push(v);
+                }
             }));
-            console.log("La liste de vin recuperer " + _this.listVins[0].nom);
+            // console.log("La liste de vin recuperer "+this.listVins[0].nom);
         });
+        this.nbVin = this.listVins.length;
     }
     AccueilPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad AccueilPage');
     };
     AccueilPage.prototype.onClickListVin = function () {
-        this.navCtrl.push('ListvinPage');
+        this.navCtrl.push('ListvinPage', { vinList: this.listVins });
     };
     AccueilPage.prototype.onClickAjoutVin = function () {
         this.navCtrl.push('AjoutPage');

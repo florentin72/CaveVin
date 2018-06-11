@@ -25,6 +25,7 @@ export class AjoutPage {
   quantite:number;
   prix : number;
   commentaire : string;
+  millesime : number;
   readonly TAG:string = "PageAjout";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private service : VinServiceProvider) {
@@ -34,6 +35,7 @@ export class AjoutPage {
   writewine( v : Vin ) {
     console.log("le vin a ajouter" + v.nom);
     this.service.addVin(v).then(ref =>{
+    console.log("la reference   "+ref);
 
 
     });
@@ -58,10 +60,13 @@ export class AjoutPage {
     console.log(`${this.TAG} addBottle ${this.type}`);
     console.log(`${this.TAG} addBottle ${this.quantite}`);
     console.log(`${this.TAG} addBottle ${this.commentaire}`);
+    console.log(`${this.TAG} addBottle ${this.millesime}`);
 
 
 
-  this.writewine(new Vin(this.nom,this.domaine,this.type,this.prix,this.quantite, this.commentaire));
+  this.writewine(new Vin(this.nom,this.domaine,this.type,this.prix,this.quantite, this.commentaire, this.millesime));
+  alert("Bouteille ajouté ! ");
+  this.navCtrl.setRoot('AccueilPage');
 
   }
 

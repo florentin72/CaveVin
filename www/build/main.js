@@ -81,7 +81,7 @@ var HomePage = /** @class */ (function () {
             return __generator(this, function (_a) {
                 console.log(this.TAG + " onClickAccueil " + this.username);
                 console.log(this.TAG + " onClickAccueil " + this.password);
-                if (__WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().signInWithEmailAndPassword(this.username, this.password).then) {
+                if (__WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().signInWithEmailAndPassword(this.username, this.password).then()) {
                     uid = __WEBPACK_IMPORTED_MODULE_3__model_utils__["a" /* Utils */].getUserId();
                     //this.writeUserData(uid,name,email);
                     console.log("recuperation  d'info " + __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().signInAndRetrieveDataWithEmailAndPassword(this.username, this.password));
@@ -102,9 +102,11 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.createAccount = function () {
+        var _this = this;
         if (this.mdp1 == this.mdp2) {
-            __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().createUserWithEmailAndPassword(this.mail, this.mdp1);
-            __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().signInWithEmailAndPassword(this.mail, this.mdp1);
+            __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().createUserWithEmailAndPassword(this.mail, this.mdp1).then(function () {
+                __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().signInWithEmailAndPassword(_this.mail, _this.mdp1);
+            });
             this.navCtrl.setRoot('AccueilPage');
         }
         else {
@@ -113,7 +115,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/'\n  <ion-header>\n    \n      <ion-col>\n        <div>Cave</div>\n      </ion-col>\n     \n     \n</ion-header>\n  \n\n\n<ion-content padding class= "master" >\n    <div class = "corps">\n  <h1>Se connecter</h1>\n      <ion-list>\n    <ion-item class = "item">\n\n      <ion-label stacked>Username</ion-label>\n      <ion-input type="mail"  [(ngModel)]= "username"></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label stacked>mot de passe</ion-label>\n      <ion-input type="password"  [(ngModel)]= "password"></ion-input>\n    </ion-item>\n  \n  </ion-list>\n  \n  <button ion-button (click) = "connexion()"  >se connecter</button>\n \n    <h1>S\'inscrire</h1>\n\n    <ion-list >\n\n      <ion-item>\n        <ion-label stacked>email</ion-label>\n        <ion-input type="email"  [(ngModel)]= "mail"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp1"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>confirmer mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp2"></ion-input>\n      </ion-item>\n\n    </ion-list>\n    <button ion-button (click) = "createAccount()"  >S\'inscrire</button>\n\n\n\n     </div>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/'\n  <ion-header>\n    \n      <ion-col>\n        <div>Cave</div>\n      </ion-col>\n     \n     \n</ion-header>\n  \n\n\n<ion-content padding class= "master" >\n    <div class = "corps">\n  <h1>Se connecter</h1>\n      <ion-list>\n    <ion-item class = "item">\n\n      <ion-label stacked>email</ion-label>\n      <ion-input type="mail"  [(ngModel)]= "username"></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label stacked>mot de passe</ion-label>\n      <ion-input type="password"  [(ngModel)]= "password"></ion-input>\n    </ion-item>\n  \n  </ion-list>\n  \n  <button ion-button (click) = "connexion()"  >se connecter</button>\n \n    <h1>S\'inscrire</h1>\n\n    <ion-list >\n\n      <ion-item>\n        <ion-label stacked>email</ion-label>\n        <ion-input type="email"  [(ngModel)]= "mail"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp1"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label stacked>confirmer mot de passe</ion-label>\n        <ion-input type="password"  [(ngModel)]= "mdp2"></ion-input>\n      </ion-item>\n\n    </ion-list>\n    <button ion-button (click) = "createAccount()"  >S\'inscrire</button>\n\n\n\n     </div>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], HomePage);
@@ -205,19 +207,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 /*
   Generated class for the VinServiceProvider provider.
-
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 var VinServiceProvider = /** @class */ (function () {
     function VinServiceProvider(db) {
         this.db = db;
+        this.TAG = "vinService";
         this.listVins = [];
         this.user = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser;
         var uid;
+        console.log(this.user);
         if (this.user != null) {
             uid = this.user.uid; // The user's ID, unique to the Firebase project. Do NOT use
-            console.log("il y a un utilisateur son id est :  " + uid);
+            console.log(this.TAG + "il y a un utilisateur son id est :  " + uid);
             // this value to authenticate with your backend server, if
             // you have one. Use User.getToken() instead.
             this.listVin = this.db.list('users/' + uid + '/listVin');

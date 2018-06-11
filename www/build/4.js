@@ -74,7 +74,7 @@ var ComptePage = /** @class */ (function () {
         console.log("Valeur total de la cave  " + this.prix);
         this.nbBlanc = this.calculParType("blanc");
         console.log("nombre de bouteille de blanc : " + this.nbBlanc);
-        this.nbRouge = this.calculParType("Rouge");
+        this.nbRouge = this.calculParType("rouge");
         console.log("nombre de bouteille de rouge : " + this.nbRouge);
         this.nbRose = this.calculParType("rose");
         console.log("nombre de bouteille de rose : " + this.nbRose);
@@ -87,6 +87,7 @@ var ComptePage = /** @class */ (function () {
         this.listVin.forEach(function (element) {
             p += element.prix * element.quantite;
             console.log("p = " + p);
+            console.log(element.type);
         });
         return p;
     };
@@ -94,14 +95,16 @@ var ComptePage = /** @class */ (function () {
         var nb = 0;
         this.listVin.forEach(function (element) {
             if (element.type == type) {
-                nb += nb * element.quantite;
+                console.log("Test résussi");
+                nb += element.quantite * 1;
             }
         });
+        console.log("nb = " + nb);
         return nb;
     };
     ComptePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-compte',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\compte\compte.html"*/'<!--\n  Generated template for the ComptePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n    \n  <ion-col>\n    <div>Cave</div>\n  </ion-col>\n \n \n</ion-header>\n\n<ion-content padding>\n    <ion-row>\n        <ion-icon name="logo-usd"></ion-icon>\n        <p>{{this.prix}} </p>\n    </ion-row>\n    <ion-row>\n        <ion-icon name="logo-usd"></ion-icon>\n        <p>{{this.prix}} </p>\n    </ion-row>\n    <ion-row>\n        <ion-icon name="logo-usd"></ion-icon>\n        <p>{{this.prix}} </p>\n    </ion-row>\n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\compte\compte.html"*/,
+            selector: 'page-compte',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\compte\compte.html"*/'<!--\n  Generated template for the ComptePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n    \n  <ion-col>\n    <div>Cave</div>\n  </ion-col>\n \n \n</ion-header>\n\n<ion-content padding>\n    <ion-row>\n        <div>\n            <ul>\n                <li><ion-icon name="logo-usd"></ion-icon></li>\n                <li>  <p>{{this.prix}} </p></li>\n            </ul>\n         </div>       \n                                \n    </ion-row>\n   \n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\compte\compte.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], ComptePage);

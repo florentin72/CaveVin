@@ -58,6 +58,12 @@
     <ion-input type = "textarea" [(ngModel)]="commentaire"></ion-input>
 </ion-item>
 
+<ion-item>
+  <ion-label>Millesime</ion-label>
+  <ion-datetime id= "annee" type = "date" displayFormat="YYYY" [(ngModel)]= "millesime"> </ion-datetime>
+</ion-item>
+
+
 
 </ion-list> 
 <button ion-button  (click)="addBottle()"> valider </button> 

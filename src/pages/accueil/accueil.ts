@@ -33,28 +33,25 @@ export class AccueilPage {
   prixTot : number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams ,private  db : AngularFireDatabase,private service : VinServiceProvider) {
    
-
-
-    
-
     this.id = Utils.getUserId();
-
     this.listVins = service.getListVin();
     console.log(`${this.TAG} listAnnonces taille: ${this.listVins.length}`);
+    console.log(Utils.getUserId());
     
        this.listRef = this.db.list('users/'+this.id+'/listVin');
 
       let v : Vin;
       this.listRef.subscribe(items => {console.log(items.forEach(element => {
         console.log(element.nom);
-        v = new Vin(element.nom,element.domaine,element.type,element.prix,element.quantite,element.commentaire);
+        if (element.nom != undefined){
+        v = new Vin(element.nom,element.domaine,element.type,element.prix,element.quantite,element.commentaire, element.millesime);
         
         this.listVins.push(v);
+        }
       }));
       
-     console.log("La liste de vin recuperer "+this.listVins[0].nom);
+    // console.log("La liste de vin recuperer "+this.listVins[0].nom);
     });
-     
     
     this.nbVin = this.listVins.length;
     
@@ -69,7 +66,7 @@ export class AccueilPage {
 
   onClickListVin(){
 
-    this.navCtrl.push('ListvinPage');
+    this.navCtrl.push('ListvinPage', {vinList : this.listVins});
   }
   onClickAjoutVin(){
 

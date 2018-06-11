@@ -89,8 +89,11 @@ export class HomePage {
 
 
       if (this.mdp1 == this.mdp2){
-       firebase.auth().createUserWithEmailAndPassword(this.mail,this.mdp1).then();
-       firebase.auth().signInWithEmailAndPassword(this.mail,this.mdp1);
+       firebase.auth().createUserWithEmailAndPassword(this.mail,this.mdp1).then( () => {
+        firebase.auth().signInWithEmailAndPassword(this.mail,this.mdp1)
+
+
+       });
        this.navCtrl.setRoot('AccueilPage');
        
   }

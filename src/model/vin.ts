@@ -7,7 +7,8 @@ export class Vin {
     type : string;
     prix : number;
     commentaire : string;
-    constructor(  n : string , d : string , t : string, p : number, q : number, com : string){
+    millesime : number;
+    constructor(  n : string , d : string , t : string, p : number, q : number, com : string , m : number){
       
         this.domaine = d;
         this.nom = n;
@@ -15,6 +16,7 @@ export class Vin {
         this.prix = p;
         this.quantite = q ;
         this.commentaire = com;
+        this.millesime = m ;
     }
 
 

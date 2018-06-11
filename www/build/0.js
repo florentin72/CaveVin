@@ -44,13 +44,14 @@ var AjoutPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Vin; });
 var Vin = /** @class */ (function () {
-    function Vin(n, d, t, p, q, com) {
+    function Vin(n, d, t, p, q, com, m) {
         this.domaine = d;
         this.nom = n;
         this.type = t;
         this.prix = p;
         this.quantite = q;
         this.commentaire = com;
+        this.millesime = m;
     }
     Vin.prototype.toString = function () {
         return "Le vin " + this.nom + " domaine " + this.domaine + " prix :  " + this.prix;
@@ -100,6 +101,7 @@ var AjoutPage = /** @class */ (function () {
     AjoutPage.prototype.writewine = function (v) {
         console.log("le vin a ajouter" + v.nom);
         this.service.addVin(v).then(function (ref) {
+            console.log("la reference   " + ref);
         });
         /*firebase.database().ref('users/' + userId +"/vin"+v.nom).set({
        domaine : v.domaine,
@@ -119,11 +121,14 @@ var AjoutPage = /** @class */ (function () {
         console.log(this.TAG + " addBottle " + this.type);
         console.log(this.TAG + " addBottle " + this.quantite);
         console.log(this.TAG + " addBottle " + this.commentaire);
-        this.writewine(new __WEBPACK_IMPORTED_MODULE_2__model_vin__["a" /* Vin */](this.nom, this.domaine, this.type, this.prix, this.quantite, this.commentaire));
+        console.log(this.TAG + " addBottle " + this.millesime);
+        this.writewine(new __WEBPACK_IMPORTED_MODULE_2__model_vin__["a" /* Vin */](this.nom, this.domaine, this.type, this.prix, this.quantite, this.commentaire, this.millesime));
+        alert("Bouteille ajouté ! ");
+        this.navCtrl.setRoot('AccueilPage');
     };
     AjoutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ajout',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/'<!--\n  Generated template for the AjoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n    \n  <ion-col>\n    <div>Cave</div>\n  </ion-col>\n \n \n</ion-header>\n\n\n<ion-content padding class="master">\n    <h1>Ajouter une bouteille</h1>\n  <ion-list>\n\n\n    <ion-item>\n        <ion-label>Domaine</ion-label>\n        <ion-input type = "text"[(ngModel)]="domaine" ></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Nom</ion-label>\n        <ion-input id= "name" type = "text" [(ngModel)]= "nom"> </ion-input>\n    </ion-item>\n\n\n\n    <ion-item>\n        <ion-label>Type de Vin </ion-label>\n      <ion-select  [(ngModel)]="type">\n          \n\n        <ion-option value="rouge">Vin Rouge</ion-option>\n        <ion-option value="blanc">Vin Blanc</ion-option>\n        <ion-option value="rose">Vin Rosé</ion-option>\n      </ion-select>\n    </ion-item>\n\n\n    <ion-item>\n        <ion-label>Quantité</ion-label>\n        <ion-input type = "number" min = "1"  [(ngModel)]="quantite"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Prix</ion-label>\n      <ion-input type = "number" min = "0"  [(ngModel)]="prix"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Commentaire</ion-label>\n    <ion-input type = "textarea" [(ngModel)]="commentaire"></ion-input>\n</ion-item>\n\n\n</ion-list> \n<button ion-button  (click)="addBottle()"> valider </button> \n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/,
+            selector: 'page-ajout',template:/*ion-inline-start:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/'<!--\n  Generated template for the AjoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n    \n  <ion-col>\n    <div>Cave</div>\n  </ion-col>\n \n \n</ion-header>\n\n\n<ion-content padding class="master">\n    <h1>Ajouter une bouteille</h1>\n  <ion-list>\n\n\n    <ion-item>\n        <ion-label>Domaine</ion-label>\n        <ion-input type = "text"[(ngModel)]="domaine" ></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-label>Nom</ion-label>\n        <ion-input id= "name" type = "text" [(ngModel)]= "nom"> </ion-input>\n    </ion-item>\n\n\n\n    <ion-item>\n        <ion-label>Type de Vin </ion-label>\n      <ion-select  [(ngModel)]="type">\n          \n\n        <ion-option value="rouge">Vin Rouge</ion-option>\n        <ion-option value="blanc">Vin Blanc</ion-option>\n        <ion-option value="rose">Vin Rosé</ion-option>\n      </ion-select>\n    </ion-item>\n\n\n    <ion-item>\n        <ion-label>Quantité</ion-label>\n        <ion-input type = "number" min = "1"  [(ngModel)]="quantite"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Prix</ion-label>\n      <ion-input type = "number" min = "0"  [(ngModel)]="prix"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label>Commentaire</ion-label>\n    <ion-input type = "textarea" [(ngModel)]="commentaire"></ion-input>\n</ion-item>\n\n<ion-item>\n  <ion-label>Millesime</ion-label>\n  <ion-datetime id= "annee" type = "date" displayFormat="YYYY" [(ngModel)]= "millesime"> </ion-datetime>\n</ion-item>\n\n\n\n</ion-list> \n<button ion-button  (click)="addBottle()"> valider </button> \n</ion-content>\n'/*ion-inline-end:"C:\Users\flore\OneDrive\Bureau\Cours\ionic\CaveVin\Cave\src\pages\ajout\ajout.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_vin_service_vin_service__["a" /* VinServiceProvider */]])
     ], AjoutPage);

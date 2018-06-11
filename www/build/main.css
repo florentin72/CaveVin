@@ -30546,6 +30546,7 @@ page-accueil .card-background-page {
 page-accueil .card-background-page ion-card {
   position: relative;
   text-align: center;
+  border-radius: 15px;
 }
 
 page-accueil .card-background-page .card-title {
@@ -30579,7 +30580,7 @@ page-ajout ion-header {
 }
 
 page-ajout .master {
-  background-image: url("http://www.pswalloniepicarde.be/wp-content/uploads/2013/06/fond-rouge-1.jpg");
+  background-color: #cac6cf;
 }
 
 page-compte ion-header {
@@ -30587,7 +30588,17 @@ page-compte ion-header {
 }
 
 page-compte .master {
-  background-image: url("http://www.pswalloniepicarde.be/wp-content/uploads/2013/06/fond-rouge-1.jpg");
+  background-color: #cac6cf;
+}
+
+page-compte ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+page-compte li {
+  display: inline;
 }
 
 page-home ion-header {
@@ -30595,7 +30606,8 @@ page-home ion-header {
 }
 
 page-home ion-item {
-  border-radius: 15x;
+  border-radius: 5px;
+  margin: 40px;
 }
 
 page-home .master {
@@ -30619,7 +30631,11 @@ page-info ion-header {
 }
 
 page-info .master {
-  background-image: url("http://www.pswalloniepicarde.be/wp-content/uploads/2013/06/fond-rouge-1.jpg");
+  background-color: #cac6cf;
+}
+
+page-info ion-row {
+  background-color: black;
 }
 
 page-listvin ion-header {
@@ -30627,5 +30643,5 @@ page-listvin ion-header {
 }
 
 page-listvin .master {
-  background-image: url("http://www.pswalloniepicarde.be/wp-content/uploads/2013/06/fond-rouge-1.jpg");
+  background-color: #cac6cf;
 }

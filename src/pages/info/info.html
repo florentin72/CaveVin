@@ -48,9 +48,16 @@
             {{this.wine.quantite}}
         </ion-note>
       </ion-item>
+
+      <ion-item >
+        Millesime
+        <ion-note item-end>
+          {{this.wine.millesime}}       
+         </ion-note>
+      </ion-item>
       <ion-item>
 
-        <ion-range [(ngModel)]="brightness" min = "0"  step = "1" snaps = "true" max = {{this.wine.quantite}} pin = "true " >
+        <ion-range [(ngModel)]="quantity" min = "0"  step = "1" snaps = "true" max = {{this.wine.quantite}} pin = "true " >
           <ion-icon range-left small name="wine"></ion-icon>
           <ion-icon range-right name="pint"></ion-icon>  
         </ion-range>
